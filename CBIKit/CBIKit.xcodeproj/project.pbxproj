@@ -166,6 +166,7 @@
 		E4D6C3EF2341DB4D00A5BE44 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CBI;
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Quinn;

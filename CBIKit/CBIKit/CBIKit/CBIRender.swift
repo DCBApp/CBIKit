@@ -12,13 +12,15 @@ import MetalKit
 
 public class CBIRender:NSObject{
     
-    private var _pipelineState:MTLRenderPipelineState?
-    private var _vertexFunction:MTLFunction?
-    private var _fragmentFunction:MTLFunction?
-    var _vertexBuffer:MTLBuffer?
-    var _texture:MTLTexture?
-    var _viewportSize:vector_uint2 = .zero
-
+    private var _pipelineState:MTLRenderPipelineState?//渲染管线状态
+    private var _vertexFunction:MTLFunction?//顶点着色器程序
+    private var _fragmentFunction:MTLFunction?//片段着色器程序
+    var _vertexBuffer:MTLBuffer?//顶点坐标buffer
+    var _texture:MTLTexture? //纹理
+    var _viewportSize:vector_uint2 = .zero //视口大小，即展示的区域的大小
+    var _commandBufferLabel:String = "Quinnn.CBIKit.CBIRender.CommandBuffer" //commandBuffer 标识符
+    var _pipelineLabel:String = "Quinnn.CBIKit.CBIRender.Pipline" //commandBuffer 标识符
+    
     init(mtkView:MTKView) {
         super.init()
         _viewportSize.x = UInt32(mtkView.drawableSize.width)
@@ -31,7 +33,7 @@ public class CBIRender:NSObject{
     
     func configurePipelineState(mtkView:MTKView){
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
-        pipelineStateDescriptor.label = "quinn.metal.render"
+        pipelineStateDescriptor.label = _pipelineLabel
         pipelineStateDescriptor.vertexFunction = _vertexFunction
         pipelineStateDescriptor.fragmentFunction = _fragmentFunction
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = mtkView.colorPixelFormat
@@ -55,7 +57,7 @@ extension CBIRender:MTKViewDelegate{
     public func draw(in view: MTKView) {
         
         let commandBuffer = sharedContext.commandQueue.makeCommandBuffer()
-        commandBuffer?.label = "CBIRenderImage"
+        commandBuffer?.label = _commandBufferLabel
         
         let renderPassDescriptor = view.currentRenderPassDescriptor
         
@@ -65,7 +67,7 @@ extension CBIRender:MTKViewDelegate{
             renderEncoder?.setViewport(MTLViewport.init(originX: 0, originY: 0, width:Double(_viewportSize.x) , height: Double(_viewportSize.y), znear: 0.0, zfar: 1.0))
             renderEncoder?.setRenderPipelineState(_pipelineState!)
             renderEncoder?.setVertexBuffer(_vertexBuffer, offset: 0, index: 0)
-
+            //视口大小设置，vertexshader 中的 视口数据设置再此
             renderEncoder?.setVertexBytes(&_viewportSize,
                                           length: MemoryLayout<vector_uint2>.size,
                                           index: Int(CBIVertexInputIndexViewportSize.rawValue))

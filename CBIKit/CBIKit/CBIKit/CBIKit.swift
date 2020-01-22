@@ -9,15 +9,15 @@
 import UIKit
 import MetalKit
 
-
+// 上下文
 public let sharedContext = CBIKitContext()
 
 public class CBIKitContext{
     
-    public let device:MTLDevice
-    public let commandQueue:MTLCommandQueue
-    public let defaultLibrary: MTLLibrary
-    public let textureLoader: MTKTextureLoader
+    public let device:MTLDevice//MTL设备
+    public let commandQueue:MTLCommandQueue//MTL 队列
+    public let defaultLibrary: MTLLibrary//MTL 标准库
+    public let textureLoader: MTKTextureLoader//MTL 纹理加载器
 
     init() {
         /// device
