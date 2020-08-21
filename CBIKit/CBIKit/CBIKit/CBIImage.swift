@@ -28,7 +28,7 @@ public class CBIImage:CBIRender{
                            textureCoordinate:vector_float2(0,0))
         ]
         _vertexBuffer = sharedContext.device.makeBuffer(bytes: textureVertices,
-                                                        length: textureVertices.count * MemoryLayout<CBIVertex>.size,
+                                                        length: textureVertices.count * MemoryLayout<CBIImageVertex>.size,
                                                         options: MTLResourceOptions.storageModeShared)
     }
     func updateImage(img:UIImage){
