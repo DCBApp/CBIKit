@@ -10,6 +10,9 @@
 		E4C9AE0323D846F2006AEDEA /* CBIDepthLiveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C9AE0223D846F2006AEDEA /* CBIDepthLiveImage.swift */; };
 		E4C9AE0523D84959006AEDEA /* depth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C9AE0423D84959006AEDEA /* depth.jpg */; };
 		E4C9AE0723D84962006AEDEA /* original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C9AE0623D84962006AEDEA /* original.jpg */; };
+		E4CD898B24EEC6D400E9B939 /* girls.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CD898A24EEC6D400E9B939 /* girls.png */; };
+		E4CD898E24EF627100E9B939 /* CBIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CD898D24EF627100E9B939 /* CBIImageView.swift */; };
+		E4CD899024EF814500E9B939 /* mygirls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4CD898F24EF814500E9B939 /* mygirls.jpg */; };
 		E4D6C3FB2341DB4D00A5BE44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6C3FA2341DB4D00A5BE44 /* AppDelegate.swift */; };
 		E4D6C4012341DB4E00A5BE44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4D6C4002341DB4E00A5BE44 /* Assets.xcassets */; };
 		E4D6C4072341DB4E00A5BE44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D6C4052341DB4E00A5BE44 /* LaunchScreen.storyboard */; };
@@ -21,7 +24,7 @@
 		E4D6C475234227BE00A5BE44 /* ImageViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D6C474234227BE00A5BE44 /* ImageViewContoller.storyboard */; };
 		E4D6C477234227CC00A5BE44 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6C476234227CC00A5BE44 /* ImageViewController.swift */; };
 		E4D6C4792342294800A5BE44 /* CBIRenderSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6C4782342294800A5BE44 /* CBIRenderSquare.swift */; };
-		E4D6C47D23422CC000A5BE44 /* CBIRenderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6C47C23422CC000A5BE44 /* CBIRenderImage.swift */; };
+		E4D6C47D23422CC000A5BE44 /* CBIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6C47C23422CC000A5BE44 /* CBIImage.swift */; };
 		E4D6C481234240A800A5BE44 /* CBIRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6C480234240A800A5BE44 /* CBIRender.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		E4C9AE0223D846F2006AEDEA /* CBIDepthLiveImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBIDepthLiveImage.swift; sourceTree = "<group>"; };
 		E4C9AE0423D84959006AEDEA /* depth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = depth.jpg; sourceTree = "<group>"; };
 		E4C9AE0623D84962006AEDEA /* original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = original.jpg; sourceTree = "<group>"; };
+		E4CD898A24EEC6D400E9B939 /* girls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = girls.png; sourceTree = "<group>"; };
+		E4CD898D24EF627100E9B939 /* CBIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBIImageView.swift; sourceTree = "<group>"; };
+		E4CD898F24EF814500E9B939 /* mygirls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mygirls.jpg; sourceTree = "<group>"; };
 		E4D6C3F72341DB4D00A5BE44 /* CBIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D6C3FA2341DB4D00A5BE44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4D6C4002341DB4E00A5BE44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,7 +50,7 @@
 		E4D6C474234227BE00A5BE44 /* ImageViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageViewContoller.storyboard; sourceTree = "<group>"; };
 		E4D6C476234227CC00A5BE44 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		E4D6C4782342294800A5BE44 /* CBIRenderSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBIRenderSquare.swift; sourceTree = "<group>"; };
-		E4D6C47C23422CC000A5BE44 /* CBIRenderImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBIRenderImage.swift; sourceTree = "<group>"; };
+		E4D6C47C23422CC000A5BE44 /* CBIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBIImage.swift; sourceTree = "<group>"; };
 		E4D6C480234240A800A5BE44 /* CBIRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBIRender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +73,15 @@
 				E4C9AE0223D846F2006AEDEA /* CBIDepthLiveImage.swift */,
 			);
 			path = CBIRenderEffect;
+			sourceTree = "<group>";
+		};
+		E4CD898C24EEC6D700E9B939 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E4CD898A24EEC6D400E9B939 /* girls.png */,
+				E4CD898F24EF814500E9B939 /* mygirls.jpg */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		E4D6C3EE2341DB4D00A5BE44 = {
@@ -99,6 +114,7 @@
 		E4D6C40E2341DDE600A5BE44 /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				E4CD898C24EEC6D700E9B939 /* Resource */,
 				E4D6C3FA2341DB4D00A5BE44 /* AppDelegate.swift */,
 				E4D6C4002341DB4E00A5BE44 /* Assets.xcassets */,
 				E4D6C4052341DB4E00A5BE44 /* LaunchScreen.storyboard */,
@@ -133,7 +149,8 @@
 				E4D6C46F2341EF9000A5BE44 /* CBIShaderTypes.h */,
 				E4D6C480234240A800A5BE44 /* CBIRender.swift */,
 				E4D6C4782342294800A5BE44 /* CBIRenderSquare.swift */,
-				E4D6C47C23422CC000A5BE44 /* CBIRenderImage.swift */,
+				E4D6C47C23422CC000A5BE44 /* CBIImage.swift */,
+				E4CD898D24EF627100E9B939 /* CBIImageView.swift */,
 				E4C9AE0123D846F2006AEDEA /* CBIRenderEffect */,
 			);
 			path = CBIKit;
@@ -219,7 +236,9 @@
 			files = (
 				E4D6C475234227BE00A5BE44 /* ImageViewContoller.storyboard in Resources */,
 				E4D6C4072341DB4E00A5BE44 /* LaunchScreen.storyboard in Resources */,
+				E4CD899024EF814500E9B939 /* mygirls.jpg in Resources */,
 				E4D6C4112341DE8800A5BE44 /* SquareViewController.storyboard in Resources */,
+				E4CD898B24EEC6D400E9B939 /* girls.png in Resources */,
 				E4D6C4012341DB4E00A5BE44 /* Assets.xcassets in Resources */,
 				E4C9AE0723D84962006AEDEA /* original.jpg in Resources */,
 				E4C9AE0523D84959006AEDEA /* depth.jpg in Resources */,
@@ -235,7 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4D6C481234240A800A5BE44 /* CBIRender.swift in Sources */,
-				E4D6C47D23422CC000A5BE44 /* CBIRenderImage.swift in Sources */,
+				E4D6C47D23422CC000A5BE44 /* CBIImage.swift in Sources */,
 				E4D6C41D2341E2C700A5BE44 /* CBIKit.swift in Sources */,
 				E4D6C46E2341EF7000A5BE44 /* CBIShader.metal in Sources */,
 				E4D6C477234227CC00A5BE44 /* ImageViewController.swift in Sources */,
@@ -243,6 +262,7 @@
 				E4D6C4792342294800A5BE44 /* CBIRenderSquare.swift in Sources */,
 				E4C9AE0323D846F2006AEDEA /* CBIDepthLiveImage.swift in Sources */,
 				E4D6C3FB2341DB4D00A5BE44 /* AppDelegate.swift in Sources */,
+				E4CD898E24EF627100E9B939 /* CBIImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
