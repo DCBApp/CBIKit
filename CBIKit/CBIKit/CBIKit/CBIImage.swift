@@ -18,10 +18,14 @@ public class CBIImage:CBIRender{
         updateImage(img: image)
         let viewportSizeWidth = Float(_viewportSize.x)/2
         let textureVertices : [CBIImageVertex] = [
-            CBIImageVertex(position: vector_float2( viewportSizeWidth,-viewportSizeWidth),  textureCoordinate:vector_float2(1,1)),
-            CBIImageVertex(position: vector_float2(-viewportSizeWidth,-viewportSizeWidth),  textureCoordinate:vector_float2(0,1)),
-            CBIImageVertex(position: vector_float2( viewportSizeWidth, viewportSizeWidth),  textureCoordinate:vector_float2(0,0)),
-            CBIImageVertex(position: vector_float2(-viewportSizeWidth, viewportSizeWidth),  textureCoordinate:vector_float2(1,0))
+            CBIImageVertex(position: vector_float2(-viewportSizeWidth, -viewportSizeWidth),
+                           textureCoordinate:vector_float2(1,1)),
+            CBIImageVertex(position: vector_float2(-viewportSizeWidth, viewportSizeWidth),
+                           textureCoordinate:vector_float2(1,0)),
+            CBIImageVertex(position: vector_float2( viewportSizeWidth, -viewportSizeWidth),
+                           textureCoordinate:vector_float2(0,1)),
+            CBIImageVertex(position: vector_float2( viewportSizeWidth, viewportSizeWidth),
+                           textureCoordinate:vector_float2(0,0))
         ]
         _vertexBuffer = sharedContext.device.makeBuffer(bytes: textureVertices,
                                                         length: textureVertices.count * MemoryLayout<CBIVertex>.size,
