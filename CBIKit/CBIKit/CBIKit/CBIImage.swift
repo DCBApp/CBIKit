@@ -17,13 +17,15 @@ public class CBIImage:CBIRender{
         configurePipelineState(mtkView: mtkView)
         updateImage(img: image)
         let viewportSizeWidth = Float(_viewportSize.x)/2
-        let vertices : [CBIImageVertex] = [
+        let textureVertices : [CBIImageVertex] = [
             CBIImageVertex(position: vector_float2( viewportSizeWidth,-viewportSizeWidth),  textureCoordinate:vector_float2(1,1)),
             CBIImageVertex(position: vector_float2(-viewportSizeWidth,-viewportSizeWidth),  textureCoordinate:vector_float2(0,1)),
             CBIImageVertex(position: vector_float2( viewportSizeWidth, viewportSizeWidth),  textureCoordinate:vector_float2(0,0)),
             CBIImageVertex(position: vector_float2(-viewportSizeWidth, viewportSizeWidth),  textureCoordinate:vector_float2(1,0))
         ]
-        _vertexBuffer = sharedContext.device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<CBIVertex>.size, options: MTLResourceOptions.storageModeShared)
+        _vertexBuffer = sharedContext.device.makeBuffer(bytes: textureVertices,
+                                                        length: textureVertices.count * MemoryLayout<CBIVertex>.size,
+                                                        options: MTLResourceOptions.storageModeShared)
     }
     func updateImage(img:UIImage){
         if let cgImage = img.cgImage {
