@@ -15,14 +15,14 @@ public class CBIRenderSquare:CBIRender{
         super.init(mtkView: mtkView)
         configureShader(vertexShader: "vertexShader", fragmentShader: "fragmentShader")
         configurePipelineState(mtkView: mtkView)
-        let viewportSizeWidth = Float(_viewportSize.x)/2
+        let viewportSizeWidth = Float(viewportSize.x)/2
         let vertices : [CBIVertex] = [
             CBIVertex(position: vector_float2( viewportSizeWidth,-viewportSizeWidth), color: vector_float4(1,0,0,1)),
             CBIVertex(position: vector_float2(-viewportSizeWidth,-viewportSizeWidth), color: vector_float4(1,0,0,1)),
             CBIVertex(position: vector_float2( viewportSizeWidth, viewportSizeWidth), color: vector_float4(1,0,0,1)),
             CBIVertex(position: vector_float2(-viewportSizeWidth, viewportSizeWidth), color: vector_float4(1,0,0,1))
         ]
-        _vertexBuffer = sharedContext.device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<CBIVertex>.size, options: MTLResourceOptions.storageModeShared)
+        vertexBuffer = sharedContext.device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<CBIVertex>.size, options: MTLResourceOptions.storageModeShared)
     }
 }
 

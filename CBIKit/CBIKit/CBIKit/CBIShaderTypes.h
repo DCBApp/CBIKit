@@ -15,6 +15,7 @@ typedef enum CBIVertexInputIndex
     CBIVertexInputIndexVertices     = 0,
     CBIVertexInputIndexViewportSize = 1,
 } CBIVertexInputIndex;
+
 typedef struct
 {
     vector_float2 position;

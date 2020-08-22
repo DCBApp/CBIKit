@@ -41,7 +41,7 @@ vertex RasterizerData vertexShader(uint vertexID [[vertex_id]],
 
     // 将像素空间中的位置转换为剪贴空间中的位置,
     // 将像素坐标除以视口大小的一半.
-    // 实际上是在这里做的坐标归一化，很多是在外面做的坐标归一化，暂时写到这里是方便大家理解
+    // 实际上是在这里做的坐标归一化，很多是在外面做的坐标归一化，暂时写到这里是方便理解
     out.position = vector_float4(0.0, 0.0, 0.0, 1.0);
     out.position.xy = pixelSpacePosition / (viewportSize / 2.0);
 
@@ -69,24 +69,11 @@ imageVertexShader(uint vertexID [[vertex_id]],
                            constant vector_uint2 *viewportSizePointer [[buffer(CBIVertexInputIndexViewportSize)]])
 {
     ImageRasterizerData out;
-
-    // Index into the array of positions to get the current vertex.
-    // The positions are specified in pixel dimensions (i.e. a value of 100
-    // is 100 pixels from the origin).
     float2 pixelSpacePosition = vertices[vertexID].position.xy;
-
-    // Get the viewport size and cast to float.
     vector_float2 viewportSize = vector_float2(*viewportSizePointer);
-    
-
-    // To convert from positions in pixel space to positions in clip-space,
-    //  divide the pixel coordinates by half the size of the viewport.
     out.position = vector_float4(0.0, 0.0, 0.0, 1.0);
     out.position.xy = pixelSpacePosition / (viewportSize / 2.0);
-
-    // Pass the input color directly to the rasterizer.
     out.textureCoordinate = vertices[vertexID].textureCoordinate;
-
     return out;
 }
 fragment float4
@@ -95,11 +82,7 @@ imageFragmentShader(ImageRasterizerData in [[stage_in]],
 {
      constexpr sampler textureSampler (mag_filter::linear,
                                          min_filter::linear);
-
-       // Sample the texture to obtain a color
        const half4 colorSample = colorTexture.sample(textureSampler, in.textureCoordinate);
-
-       // return the color of the texture
        return float4(colorSample);
 }
-//MARK: s 着色器
+

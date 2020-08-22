@@ -16,25 +16,27 @@ public class CBIImage:CBIRender{
         configureShader(vertexShader: "imageVertexShader", fragmentShader: "imageFragmentShader")
         configurePipelineState(mtkView: mtkView)
         updateImage(img: image)
-        let viewportSizeWidth = Float(_viewportSize.x)/2
+        let viewportSizeWidth = Float(viewportSize.x)/2
+        let viewportSizeHeight = Float(viewportSize.y)/2
+
         let textureVertices : [CBIImageVertex] = [
-            CBIImageVertex(position: vector_float2(-viewportSizeWidth, -viewportSizeWidth),
+            CBIImageVertex(position: vector_float2(-viewportSizeWidth, -viewportSizeHeight),
                            textureCoordinate:vector_float2(1,1)),
-            CBIImageVertex(position: vector_float2(-viewportSizeWidth, viewportSizeWidth),
+            CBIImageVertex(position: vector_float2(-viewportSizeWidth, viewportSizeHeight),
                            textureCoordinate:vector_float2(1,0)),
-            CBIImageVertex(position: vector_float2( viewportSizeWidth, -viewportSizeWidth),
+            CBIImageVertex(position: vector_float2( viewportSizeWidth, -viewportSizeHeight),
                            textureCoordinate:vector_float2(0,1)),
-            CBIImageVertex(position: vector_float2( viewportSizeWidth, viewportSizeWidth),
+            CBIImageVertex(position: vector_float2( viewportSizeWidth, viewportSizeHeight),
                            textureCoordinate:vector_float2(0,0))
         ]
-        _vertexBuffer = sharedContext.device.makeBuffer(bytes: textureVertices,
+        vertexBuffer = sharedContext.device.makeBuffer(bytes: textureVertices,
                                                         length: textureVertices.count * MemoryLayout<CBIImageVertex>.size,
                                                         options: MTLResourceOptions.storageModeShared)
     }
     func updateImage(img:UIImage){
         if let cgImage = img.cgImage {
             do{
-                _texture = try sharedContext.textureLoader.newTexture(cgImage:cgImage , options: [MTKTextureLoader.Option.SRGB : false])
+                texture = try sharedContext.textureLoader.newTexture(cgImage:cgImage , options: [MTKTextureLoader.Option.SRGB : false])
             }catch{
                 assert(false, "\(error)")
             }

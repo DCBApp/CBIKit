@@ -12,33 +12,33 @@ import MetalKit
 
 public class CBIRender:NSObject{
     
-    private var _pipelineState:MTLRenderPipelineState?//渲染管线状态
-    private var _vertexFunction:MTLFunction?//顶点着色器程序
-    private var _fragmentFunction:MTLFunction?//片段着色器程序
-    var _vertexBuffer:MTLBuffer?//顶点坐标buffer
-    var _texture:MTLTexture? //纹理
-    var _viewportSize:vector_uint2 = .zero //视口大小，即展示的区域的大小
-    var _commandBufferLabel:String = "Quinnn.CBIKit.CBIRender.CommandBuffer" //commandBuffer 标识符
-    var _pipelineLabel:String = "Quinnn.CBIKit.CBIRender.Pipline" //commandBuffer 标识符
+    private var pipelineState:MTLRenderPipelineState?//渲染管线状态
+    private var vertexFunction:MTLFunction?//顶点着色器程序
+    private var fragmentFunction:MTLFunction?//片段着色器程序
+    var vertexBuffer:MTLBuffer?//顶点坐标buffer
+    var texture:MTLTexture? //纹理
+    var viewportSize:vector_uint2 = .zero //视口大小，即展示的区域的大小
+    var commandBufferLabel:String = "Quinnn.CBIKit.CBIRender.CommandBuffer" //commandBuffer 标识符
+    var pipelineLabel:String = "Quinnn.CBIKit.CBIRender.Pipline" //commandBuffer 标识符
     
     init(mtkView:MTKView) {
         super.init()
-        _viewportSize.x = UInt32(mtkView.drawableSize.width)
-        _viewportSize.y = UInt32(mtkView.drawableSize.height)
+        viewportSize.x = UInt32(mtkView.drawableSize.width)
+        viewportSize.y = UInt32(mtkView.drawableSize.height)
     }
     func configureShader(vertexShader:String,fragmentShader:String){
-        _vertexFunction = sharedContext.defaultLibrary.makeFunction(name: vertexShader)
-        _fragmentFunction = sharedContext.defaultLibrary.makeFunction(name: fragmentShader)
+        vertexFunction = sharedContext.defaultLibrary.makeFunction(name: vertexShader)
+        fragmentFunction = sharedContext.defaultLibrary.makeFunction(name: fragmentShader)
     }
     
     func configurePipelineState(mtkView:MTKView){
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
-        pipelineStateDescriptor.label = _pipelineLabel
-        pipelineStateDescriptor.vertexFunction = _vertexFunction
-        pipelineStateDescriptor.fragmentFunction = _fragmentFunction
+        pipelineStateDescriptor.label = pipelineLabel
+        pipelineStateDescriptor.vertexFunction = vertexFunction
+        pipelineStateDescriptor.fragmentFunction = fragmentFunction
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = mtkView.colorPixelFormat
         do{
-            _pipelineState = try sharedContext.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+            pipelineState = try sharedContext.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
         }catch{
             assert(false, "\(error)")
         }
@@ -50,28 +50,28 @@ public class CBIRender:NSObject{
 }
 extension CBIRender:MTKViewDelegate{
     public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        _viewportSize.x = UInt32(size.width)
-        _viewportSize.y = UInt32(size.height)
+        viewportSize.x = UInt32(size.width)
+        viewportSize.y = UInt32(size.height)
     }
     
     public func draw(in view: MTKView) {
         
         let commandBuffer = sharedContext.commandQueue.makeCommandBuffer()
-        commandBuffer?.label = _commandBufferLabel
+        commandBuffer?.label = commandBufferLabel
         
         let renderPassDescriptor = view.currentRenderPassDescriptor
         
         if let _renderPassDescriptor = renderPassDescriptor, let currentDrawable = view.currentDrawable{
             let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: _renderPassDescriptor)
             
-            renderEncoder?.setViewport(MTLViewport.init(originX: 0, originY: 0, width:Double(_viewportSize.x) , height: Double(_viewportSize.y), znear: 0.0, zfar: 1.0))
-            renderEncoder?.setRenderPipelineState(_pipelineState!)
-            renderEncoder?.setVertexBuffer(_vertexBuffer, offset: 0, index: 0)
+            renderEncoder?.setViewport(MTLViewport.init(originX: 0, originY: 0, width:Double(viewportSize.x) , height: Double(viewportSize.y), znear: 0.0, zfar: 1.0))
+            renderEncoder?.setRenderPipelineState(pipelineState!)
+            renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
             //视口大小设置，vertexshader 中的 视口数据设置再此
-            renderEncoder?.setVertexBytes(&_viewportSize,
+            renderEncoder?.setVertexBytes(&viewportSize,
                                           length: MemoryLayout<vector_uint2>.size,
                                           index: Int(CBIVertexInputIndexViewportSize.rawValue))
-            if let texture = _texture{
+            if let texture = texture{
                 renderEncoder?.setFragmentTexture(texture, index: 0)
             }
             renderEncoder?.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
